@@ -1,0 +1,15 @@
+<p>main-screen works!</p>
+<div class="qr-container">
+  <zxing-scanner 
+    [device]="currentDevice"
+    (scanSuccess)="onCodeResult($event)">
+  </zxing-scanner>
+
+  <select (change)="onDeviceSelectChange($event)">
+    <option *ngFor="let device of availableDevices" [value]="device.deviceId">
+      {{ device.label || 'Cámara ' + device.deviceId }}
+    </option>
+  </select>
+
+  <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
+</div>
