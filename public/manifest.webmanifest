@@ -1,9 +1,10 @@
 {
   "name": "AccessApp",
   "short_name": "AccessApp",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
+  "permissions": ["camera"],
   "icons": [
     {
       "src": "icons/icon-72x72.png",

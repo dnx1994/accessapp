@@ -41,6 +41,7 @@ export class MainScreen {
     this.qrResult = resultString;
     console.log('Código detectado:', resultString);
     alert(`Código detectado: ${resultString}`);
+    this.openDetails(this.guestsList.find(g=>g.invitationCode===resultString)!);
   }
 
   getList(){
@@ -67,4 +68,26 @@ export class MainScreen {
       }
     });
   }
+async pedirPermisoCamara(): Promise<boolean> {
+  try {
+    const status = await navigator.permissions.query({ name: 'camera' as PermissionName });
+    console.log('Estado permiso:', status.state);
+
+    if (status.state === 'granted') {
+      console.log('✅ Cámara ya permitida');
+      return true;
+    } else if (status.state === 'prompt') {
+      await navigator.mediaDevices.getUserMedia({ video: true });
+      console.log('✅ Permiso concedido tras prompt');
+      return true;
+    } else {
+      alert('⚠️ Necesitás habilitar manualmente el permiso de cámara en los ajustes del navegador o del sistema.');
+      return false;
+    }
+  } catch (err) {
+    console.error('Error al solicitar cámara', err);
+    return false;
+  }
+}
+
 }
