@@ -1,6 +1,9 @@
 <p>0.0.1</p>
 <div class="qr-container">
-  <zxing-scanner 
+    <button matFab aria-label="Example icon button with a heart icon" *ngIf="isreading ===false" (click)="read()">
+        <mat-icon>camera</mat-icon>
+    </button>
+  <zxing-scanner *ngIf="isreading"
     [device]="currentDevice"
     (scanSuccess)="onCodeResult($event)">
   </zxing-scanner>

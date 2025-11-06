@@ -4,10 +4,12 @@ import { Guest } from '../models/guest';
 import { GuestService } from '../services/guest-service';
 import { GestDetails } from '../gest-details/gest-details';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-screen',
-  imports: [ZXingScannerModule],
+  imports: [ZXingScannerModule, MatIconModule, CommonModule],
   templateUrl: './main-screen.html',
   styleUrl: './main-screen.css',
 })
@@ -16,6 +18,7 @@ export class MainScreen {
   currentDevice: MediaDeviceInfo | undefined;
   qrResult: string = '';
   guestsList: Guest[] = [];
+  isreading: boolean = false;
   constructor(private guestService: GuestService
     ,private dialog: MatDialog
   ) {}
@@ -55,6 +58,11 @@ export class MainScreen {
   }
 
   openDetails(guest:Guest){
+    if(!guest){
+      alert('Invitado no encontrado para el código escaneado.');
+      this.isreading=false;
+      return;
+    }
     const dialogRef = this.dialog.open(GestDetails, {
       width: '400px',
       data: guest,
@@ -64,8 +72,12 @@ export class MainScreen {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('✅ Confirmado cierre para', guest.nombre);
+        this.isreading=false;
+
       } else {
         console.log('❌ Cancelado');
+        this.isreading=false;
+
       }
     });
   }
@@ -89,6 +101,10 @@ export class MainScreen {
     console.error('Error al solicitar cámara', err);
     return false;
   }
+}
+read(){
+        this.isreading=true;
+        console.log('Iniciando lectura de QR...', this.isreading);
 }
 
 }
