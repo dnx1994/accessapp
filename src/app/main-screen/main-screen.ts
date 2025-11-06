@@ -20,6 +20,7 @@ export class MainScreen {
     ,private dialog: MatDialog
   ) {}
   ngOnInit(): void {
+    this.pedirPermisoCamara();
     this.getList();
    }
 
@@ -68,7 +69,7 @@ export class MainScreen {
       }
     });
   }
-async pedirPermisoCamara(): Promise<boolean> {
+  async pedirPermisoCamara() {
   try {
     const status = await navigator.permissions.query({ name: 'camera' as PermissionName });
     console.log('Estado permiso:', status.state);
