@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { Guest } from '../models/guest';
+import { GuestService } from '../services/guest-service';
+import { GestDetails } from '../gest-details/gest-details';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-screen',
@@ -11,8 +15,13 @@ export class MainScreen {
   availableDevices: MediaDeviceInfo[] = [];
   currentDevice: MediaDeviceInfo | undefined;
   qrResult: string = '';
-
-  ngOnInit(): void { }
+  guestsList: Guest[] = [];
+  constructor(private guestService: GuestService
+    ,private dialog: MatDialog
+  ) {}
+  ngOnInit(): void {
+    this.getList();
+   }
 
   onCamerasFound(devices: MediaDeviceInfo[]): void {
     this.availableDevices = devices;
@@ -31,5 +40,31 @@ export class MainScreen {
   onCodeResult(resultString: string) {
     this.qrResult = resultString;
     console.log('Código detectado:', resultString);
+    alert(`Código detectado: ${resultString}`);
+  }
+
+  getList(){
+    this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+    if(this.guestsList.length===0){
+      this.guestService.import();
+      this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+
+    }
+  }
+
+  openDetails(guest:Guest){
+    const dialogRef = this.dialog.open(GestDetails, {
+      width: '400px',
+      data: guest,
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('✅ Confirmado cierre para', guest.nombre);
+      } else {
+        console.log('❌ Cancelado');
+      }
+    });
   }
 }

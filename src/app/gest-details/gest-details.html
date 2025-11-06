@@ -1,1 +1,21 @@
-<p>gest-details works!</p>
+<h2 mat-dialog-title>Confirmar Cierre</h2>
+
+<mat-dialog-content *ngIf="guest">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ guest.nombre }} {{ guest.apellido }}</mat-card-title>
+      <mat-card-subtitle>{{ guest.tipoDocumento }}: {{ guest.numeroDocumento }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p><strong>ID:</strong> {{ guest.id }}</p>
+      <p><strong>Ingreso:</strong> {{ guest.isIngress ? 'Sí' : 'No' }}</p>
+      <p><strong>Código de Invitación:</strong> {{ guest.invitationCode }}</p>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="warn" (click)="confirmar()">Sí, cerrar</button>
+</mat-dialog-actions>

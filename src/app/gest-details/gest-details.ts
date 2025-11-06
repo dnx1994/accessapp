@@ -1,11 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Guest } from '../models/guest';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-gest-details',
-  imports: [],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatCardModule],
   templateUrl: './gest-details.html',
   styleUrl: './gest-details.css',
 })
 export class GestDetails {
+  guest: Guest | null = null;
+  constructor(
+    public dialogRef: MatDialogRef<GestDetails>,
+    @Inject(MAT_DIALOG_DATA) public data: Guest
+  ) {
+    data ? (this.guest = data) : null;
+  }
 
+  confirmar(): void {
+    this.dialogRef.close(true);
+  }
+
+  cancelar(): void {
+    this.dialogRef.close(false);
+  }
 }
