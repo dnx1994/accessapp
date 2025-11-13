@@ -53,5 +53,5 @@ select {
   justify-content: center;
   height: calc(100vh - 56px); /* Resta el alto de la toolbar */
   padding-top: 56px; /* Evita que quede debajo del navbar */
-  background-color: #f5f5f5;
+  background-color: #000000;
 }

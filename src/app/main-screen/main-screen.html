@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="navbar">
+<mat-toolbar class="navbar" container-background-color="#000000" container-text-color="#aaaaaa" style="background-color: #111111; color: #aaaaaa;">
   <button mat-icon-button (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -24,11 +24,11 @@
       (scanSuccess)="onCodeResult($event)">
     </zxing-scanner>
 
-    <select (change)="onDeviceSelectChange($event)">
+    <!-- <select (change)="onDeviceSelectChange($event)">
       <option *ngFor="let device of availableDevices" [value]="device.deviceId">
         {{ device.label || 'Cámara ' + device.deviceId }}
       </option>
-    </select>
+    </select> -->
 
     <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
   </div>
