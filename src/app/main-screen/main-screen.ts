@@ -6,10 +6,11 @@ import { GestDetails } from '../gest-details/gest-details';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-main-screen',
-  imports: [ZXingScannerModule, MatIconModule, CommonModule],
+  imports: [ZXingScannerModule, MatIconModule, CommonModule, MatToolbarModule],
   templateUrl: './main-screen.html',
   styleUrl: './main-screen.css',
 })
@@ -20,7 +21,8 @@ export class MainScreen {
   guestsList: Guest[] = [];
   isreading: boolean = false;
   constructor(private guestService: GuestService
-    ,private dialog: MatDialog
+    ,private dialog: MatDialog,
+    
   ) {}
   ngOnInit(): void {
     this.pedirPermisoCamara();
@@ -43,6 +45,7 @@ export class MainScreen {
 
   onCodeResult(resultString: string) {
     this.qrResult = resultString;
+    this.isreading=false;
     console.log('Código detectado:', resultString);
     alert(`Código detectado: ${resultString}`);
     this.openDetails(this.guestsList.find(g=>g.invitationCode===resultString)!);
@@ -51,8 +54,11 @@ export class MainScreen {
   getList(){
     this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
     if(this.guestsList.length===0){
-      this.guestService.import();
-      this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+      this.guestService.import().then((x:Guest[])=>{
+        this.guestsList=x;
+        localStorage.setItem('guests',JSON.stringify(x));
+      })
+      // this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
 
     }
   }
@@ -106,5 +112,9 @@ read(){
         this.isreading=true;
         console.log('Iniciando lectura de QR...', this.isreading);
 }
+
+toggleMenu() {
+    alert('Abrir menú');
+  }
 
 }

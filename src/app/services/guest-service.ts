@@ -89,11 +89,20 @@ export class GuestService {
   { id: 81, nombre: "Nombre81", apellido: "Apellido81", tipoDocumento: "DNI", numeroDocumento: "74125689", isIngress: false, invitationCode: "INV1081" },
   { id: 82, nombre: "Nombre82", apellido: "Apellido82", tipoDocumento: "PASAPORTE", numeroDocumento: "36587412", isIngress: true, invitationCode: "INV1082" }]
 
-  public import(){
-    localStorage.setItem("guests", JSON.stringify(this.PERSONAS_MOCK)) 
-    // return this.PERSONAS_MOCK;
-  }
-
+  // public import(){
+  //   localStorage.setItem("guests", JSON.stringify(this.PERSONAS_MOCK)) 
+  //   // return this.PERSONAS_MOCK;
+  // }
+public import(): Promise<Guest[]> {
+  return new Promise((resolve, reject) => {
+    try {
+      // localStorage.setItem('guests', JSON.stringify(this.PERSONAS_MOCK));
+      resolve(this.PERSONAS_MOCK);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 
 

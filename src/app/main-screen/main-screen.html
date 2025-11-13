@@ -1,18 +1,35 @@
-<p>0.0.1</p>
-<div class="qr-container">
-    <button matFab aria-label="Example icon button with a heart icon" *ngIf="isreading ===false" (click)="read()">
-        <mat-icon>camera</mat-icon>
+<mat-toolbar color="primary" class="navbar">
+  <button mat-icon-button (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">AccessApp</span>
+  <span class="spacer"></span>
+  <p class="version">v0.0.1</p>
+</mat-toolbar>
+
+<div class="main-container">
+  <div class="qr-container">
+    <button
+      mat-fab
+      color="accent"
+      aria-label="Iniciar lectura QR"
+      *ngIf="!isreading"
+      (click)="read()">
+      <mat-icon>camera</mat-icon>
     </button>
-  <zxing-scanner *ngIf="isreading"
-    [device]="currentDevice"
-    (scanSuccess)="onCodeResult($event)">
-  </zxing-scanner>
 
-  <select (change)="onDeviceSelectChange($event)">
-    <option *ngFor="let device of availableDevices" [value]="device.deviceId">
-      {{ device.label || 'Cámara ' + device.deviceId }}
-    </option>
-  </select>
+    <zxing-scanner
+      *ngIf="isreading"
+      [device]="currentDevice"
+      (scanSuccess)="onCodeResult($event)">
+    </zxing-scanner>
 
-  <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
+    <select (change)="onDeviceSelectChange($event)">
+      <option *ngFor="let device of availableDevices" [value]="device.deviceId">
+        {{ device.label || 'Cámara ' + device.deviceId }}
+      </option>
+    </select>
+
+    <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
+  </div>
 </div>
