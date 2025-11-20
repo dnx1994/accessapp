@@ -54,10 +54,12 @@ export class MainScreen {
   getList(){
     this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
     if(this.guestsList.length===0){
-      this.guestService.import().then((x:Guest[])=>{
-        this.guestsList=x;
-        localStorage.setItem('guests',JSON.stringify(x));
-      })
+      this.guestService.import().then((x: Guest[] | undefined) => {
+        if (x && x.length) {
+          this.guestsList = x;
+          localStorage.setItem('guests', JSON.stringify(x));
+        }
+      });
       // this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
 
     }
@@ -114,6 +116,12 @@ read(){
 }
 
 toggleMenu() {
+    this.guestService.import().then((x: Guest[] | undefined) => {
+      if (x && x.length) {
+        this.guestsList = x;
+        localStorage.setItem('guests', JSON.stringify(x));
+      }
+    });
     alert('Abrir menú');
   }
 
