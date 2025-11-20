@@ -32,4 +32,6 @@
 
     <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
   </div>
+  <input type="text" [(ngModel)]="code" placeholder="Código" />
+  <button (click)="searchManual()">Buscar</button>
 </div>

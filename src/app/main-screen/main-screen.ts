@@ -7,10 +7,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-main-screen',
-  imports: [ZXingScannerModule, MatIconModule, CommonModule, MatToolbarModule],
+  imports: [ZXingScannerModule, MatIconModule, CommonModule, MatToolbarModule, FormsModule],
   templateUrl: './main-screen.html',
   styleUrl: './main-screen.css',
 })
@@ -20,6 +21,7 @@ export class MainScreen {
   qrResult: string = '';
   guestsList: Guest[] = [];
   isreading: boolean = false;
+  code:string='';
   constructor(private guestService: GuestService
     ,private dialog: MatDialog,
     
@@ -118,11 +120,19 @@ read(){
 toggleMenu() {
     this.guestService.import().then((x: Guest[] | undefined) => {
       if (x && x.length) {
+        console.log('Importando invitados desde el servicio...',x);
         this.guestsList = x;
         localStorage.setItem('guests', JSON.stringify(x));
       }
     });
     alert('Abrir menú');
+  }
+  searchManual() {
+    this.qrResult = this.code;
+    this.isreading=false;
+    console.log('Código detectado:', this.qrResult);
+    alert(`Código detectado: ${this.qrResult}`);
+    this.openDetails(this.guestsList.find(g=>g.invitationCode===this.qrResult)!);
   }
 
 }
