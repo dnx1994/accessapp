@@ -55,3 +55,14 @@ select {
   padding-top: 56px; /* Evita que quede debajo del navbar */
   background-color: #000000;
 }
+.photo .mat-icon {
+  background-color: #dcdee1;
+  height: 200px;
+  width: 200px;
+  font-size: 200px;
+}
+/* .mat-icon {
+  height: 200px;
+  width: 200px;
+  font-size: 200px;
+} */

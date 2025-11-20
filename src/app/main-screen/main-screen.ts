@@ -8,10 +8,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
+import { GestIndex } from '../gest-index/gest-index';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-main-screen',
-  imports: [ZXingScannerModule, MatIconModule, CommonModule, MatToolbarModule, FormsModule],
+  imports: [ZXingScannerModule, MatIconModule, CommonModule, MatToolbarModule, FormsModule, MatMenuModule , MatToolbarModule],
   templateUrl: './main-screen.html',
   styleUrl: './main-screen.css',
 })
@@ -83,10 +85,12 @@ export class MainScreen {
       if (result) {
         console.log('✅ Confirmado cierre para', guest.nombre);
         this.isreading=false;
+        this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
 
       } else {
         console.log('❌ Cancelado');
         this.isreading=false;
+        this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
 
       }
     });
@@ -118,14 +122,20 @@ read(){
 }
 
 toggleMenu() {
+  const ok = confirm("¿Estás seguro de que querés importar los invitados?");
+  if (!ok) return;
     this.guestService.import().then((x: Guest[] | undefined) => {
       if (x && x.length) {
-        console.log('Importando invitados desde el servicio...',x);
+        alert('Importando invitados desde el servicio...');
         this.guestsList = x;
         localStorage.setItem('guests', JSON.stringify(x));
+      }else{
+        alert('No se pudieron importar los invitados.');
       }
+    }).catch(err=>{
+      alert('Error al importar invitados:\n' + JSON.stringify(err, null, 2));
     });
-    alert('Abrir menú');
+    // alert('Abrir menú');
   }
   searchManual() {
     this.qrResult = this.code;
@@ -133,6 +143,27 @@ toggleMenu() {
     console.log('Código detectado:', this.qrResult);
     alert(`Código detectado: ${this.qrResult}`);
     this.openDetails(this.guestsList.find(g=>g.invitationCode===this.qrResult)!);
+  }
+  search(){
+    const dialogRef = this.dialog.open(GestIndex, {
+      width: '400px',
+      data: this.guestsList,
+      // disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // console.log('✅ Confirmado cierre para', guest.nombre);
+        this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+        this.isreading=false;
+
+      } else {
+        console.log('❌ Cancelado');
+        this.guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+        this.isreading=false;
+
+      }
+    });
   }
 
 }

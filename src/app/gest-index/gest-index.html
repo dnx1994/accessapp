@@ -1,1 +1,53 @@
-<p>gest-index works!</p>
+<h2>Listado de Invitados
+     <span 
+    (click)="close()" 
+    style="
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #e74c3c;
+      color: white;
+    "
+  >
+    ✖
+  </span>
+</h2>
+
+<div style="margin-bottom: 15px;">
+  <input type="text"
+         [(ngModel)]="searchName"
+         (input)="filter()"
+         placeholder="Buscar por nombre o apellido"
+         style="margin-right: 10px;" />
+
+  <input type="text"
+         [(ngModel)]="searchDoc"
+         (input)="filter()"
+         placeholder="Buscar por número de documento" />
+</div>
+
+<table border="1" cellpadding="6" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Tipo Doc</th>
+      <th>Nro Doc</th>
+      <th>Código</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let g of filtered" >
+      <td [style.background]="g.isIngress ? 'green' : ''">{{ g.nombre }}</td>
+      <td [style.background]="g.isIngress ? 'green' : ''">{{ g.apellido }}</td>
+      <td [style.background]="g.isIngress ? 'green' : ''">{{ g.tipoDocumento }}</td>
+      <td [style.background]="g.isIngress ? 'green' : ''">{{ g.numeroDocumento }}</td>
+      <td style="background: darkturquoise" (click)="openDetails(g)">{{ g.invitationCode }}</td>
+    </tr>
+  </tbody>
+</table>

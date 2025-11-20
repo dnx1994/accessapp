@@ -42,8 +42,21 @@ public import() {
 
     return this.http.get<Guest[]>(this.API_URL, { headers }).toPromise();
   }
-}
+  public setIngress(guest: Guest) {
+    const headers = new HttpHeaders({
+      'x-api-key': this.API_KEY,
+      'ngrok-skip-browser-warning': 'true'
+    });
+    var guestsList=localStorage.getItem('guests')?JSON.parse(localStorage.getItem('guests')!):[];
+    var gest=guestsList.find((g:Guest)=>g.id===guest.id);
+    if(gest){
+      gest.isIngress=true;
 
+      localStorage.setItem('guests', JSON.stringify(guestsList));
+    }
+    return this.http.patch<Guest>(`${this.API_URL}/${guest.invitationCode}/ingress`, guest, { headers }).toPromise();
+  }
+}
 
 
 

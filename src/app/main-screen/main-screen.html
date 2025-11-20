@@ -1,21 +1,32 @@
 <mat-toolbar class="navbar" container-background-color="#000000" container-text-color="#aaaaaa" style="background-color: #111111; color: #aaaaaa;">
-  <button mat-icon-button (click)="toggleMenu()">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="toggleMenu()">
+      <mat-icon>person</mat-icon>
+      <span>Bajar Invitados</span>
+    </button>
+    <button mat-menu-item (click)="search()">
+      <mat-icon>search</mat-icon>
+      <span>Busqueda Manual</span>
+    </button>
+  </mat-menu>
   <span class="app-title">AccessApp</span>
   <span class="spacer"></span>
-  <p class="version">v0.0.2</p>
+  <p class="version">v0.0.5</p>
 </mat-toolbar>
 
 <div class="main-container">
   <div class="qr-container">
     <button
+    class="photo"
       mat-fab
       color="accent"
       aria-label="Iniciar lectura QR"
       *ngIf="!isreading"
       (click)="read()">
-      <mat-icon>camera</mat-icon>
+      <mat-icon>photo_camera</mat-icon>
     </button>
 
     <zxing-scanner
@@ -32,6 +43,6 @@
 
     <p *ngIf="qrResult">📦 Código detectado: {{ qrResult }}</p>
   </div>
-  <input type="text" [(ngModel)]="code" placeholder="Código" />
-  <button (click)="searchManual()">Buscar</button>
+  <!-- <input type="text" [(ngModel)]="code" placeholder="Código" /> -->
+  <!-- <button (click)="search()">Buscar</button> -->
 </div>
