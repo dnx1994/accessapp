@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1763655849334,
+  "timestamp": 1763656199950,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
@@ -40,7 +40,22 @@
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "api-guests",
+      "patterns": [
+        "https:\\/\\/b8694817f10b\\.ngrok-free\\.app\\/guests"
+      ],
+      "strategy": "freshness",
+      "maxSize": 5,
+      "maxAge": 0,
+      "timeoutMs": 0,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
   "hashTable": {
     "/accessapp/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
     "/accessapp/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
