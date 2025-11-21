@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1763668389802,
+  "timestamp": 1763757276101,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
@@ -22,8 +22,8 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "installMode": "prefetch",
+      "updateMode": "lazy",
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -47,9 +47,8 @@
         "https:\\/\\/b8694817f10b\\.ngrok-free\\.app\\/guests"
       ],
       "strategy": "freshness",
-      "maxSize": 5,
-      "maxAge": 0,
-      "timeoutMs": 0,
+      "maxSize": 100,
+      "maxAge": 21600000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
