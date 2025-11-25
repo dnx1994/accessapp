@@ -17,7 +17,7 @@ export class GuestService {
   { id: 8, nombre: "Nombre8", apellido: "Apellido8", tipoDocumento: "DNI", numeroDocumento: "65897412", isIngress: true, invitationCode: "INV1008" },
   { id: 9, nombre: "Nombre9", apellido: "Apellido9", tipoDocumento: "DNI", numeroDocumento: "78541236", isIngress: false, invitationCode: "INV1009" },
 ]
- private API_URL = 'https://b8694817f10b.ngrok-free.app/guests';
+ private API_URL = 'https://accessapi.apexcode.com.ar/guests';
   private API_KEY = 'read-secret'; // <-- cambiá esto
 constructor(private http: HttpClient) {}
   // public import(){
