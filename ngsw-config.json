@@ -5,7 +5,7 @@
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
