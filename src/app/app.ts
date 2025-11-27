@@ -18,7 +18,7 @@ ngOnInit() {
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
       // Al volver al foreground recarga si algo quedó mal
-      window.location.reload();
+      // window.location.reload();
     }
   });
 }
@@ -28,7 +28,7 @@ ngOnInit() {
     this.swUpdate.versionUpdates.subscribe(event => {
       if (event.type === 'VERSION_READY') {
         // Fuerza refresh y evita congelamiento
-        document.location.reload();
+        // document.location.reload();
       }
     });
   }
