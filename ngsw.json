@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1764249443848,
+  "timestamp": 1764249712883,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
@@ -44,7 +44,7 @@
     {
       "name": "api-cache",
       "patterns": [
-        "https:\\/\\/accessapi\\.apexcode\\.com\\.ar\\/.*"
+        "https:\\/\\/accessapi\\.apexcode\\.com\\.ar\\/"
       ],
       "strategy": "performance",
       "maxSize": 100,
