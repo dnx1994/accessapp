@@ -1,11 +1,11 @@
 {
   "configVersion": 1,
-  "timestamp": 1764217095720,
+  "timestamp": 1764246803020,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "cacheQueryOptions": {
         "ignoreVary": true
@@ -13,7 +13,7 @@
       "urls": [
         "/accessapp/favicon.ico",
         "/accessapp/index.html",
-        "/accessapp/main-XI76M7F2.js",
+        "/accessapp/main-OTSW65ZY.js",
         "/accessapp/manifest.webmanifest",
         "/accessapp/polyfills-5CFQRCPP.js",
         "/accessapp/styles-FOQJG7FB.css"
@@ -22,8 +22,8 @@
     },
     {
       "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
+      "installMode": "prefetch",
+      "updateMode": "lazy",
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -42,14 +42,13 @@
   ],
   "dataGroups": [
     {
-      "name": "api-cache",
+      "name": "api-guests",
       "patterns": [
-        "https:\\/\\/accessapi\\.apexcode\\.com\\.ar\\/.*"
+        "https:\\/\\/b8694817f10b\\.ngrok-free\\.app\\/guests"
       ],
-      "strategy": "performance",
+      "strategy": "freshness",
       "maxSize": 100,
-      "maxAge": 43200000,
-      "timeoutMs": 10000,
+      "maxAge": 21600000,
       "cacheQueryOptions": {
         "ignoreVary": true
       },
@@ -66,9 +65,9 @@
     "/accessapp/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/accessapp/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/accessapp/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/accessapp/index.html": "f663e4957283fed81744a105b7eb0509321d15af",
-    "/accessapp/main-XI76M7F2.js": "db79b79317a14096b7d73fed6fe1eccb86ad3d62",
-    "/accessapp/manifest.webmanifest": "94beeca0a8dd7e572349c642845dad6cbaea6106",
+    "/accessapp/index.html": "c61d0dbdbebbb22974a77311e2bbf7c682b833de",
+    "/accessapp/main-OTSW65ZY.js": "d7b09089dc3bb961d2fdfe142974d50dd772ed50",
+    "/accessapp/manifest.webmanifest": "dff16378c1f453905952c70435a3a6f26d34c4a8",
     "/accessapp/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
     "/accessapp/styles-FOQJG7FB.css": "560e5998c17b55fa0d5511b1469332b56417c150"
   },

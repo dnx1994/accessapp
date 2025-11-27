@@ -1,6 +1,6 @@
 {
-  "name": "MostazaBresh",
-  "short_name": "MostazaBresh",
+  "name": "AccessApp",
+  "short_name": "AccessApp",
   "display": "fullscreen",
   "scope": "./",
   "start_url": "./",
