@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1764216551971,
+  "timestamp": 1764216881937,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
@@ -68,7 +68,7 @@
     "/accessapp/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
     "/accessapp/index.html": "8d68113ee0b6bacf1a538942d10b60accaeadfde",
     "/accessapp/main-EUTFOQZG.js": "a07f928e415b835efb93a8d30b86fcce6d5a5b57",
-    "/accessapp/manifest.webmanifest": "dff16378c1f453905952c70435a3a6f26d34c4a8",
+    "/accessapp/manifest.webmanifest": "94beeca0a8dd7e572349c642845dad6cbaea6106",
     "/accessapp/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
     "/accessapp/styles-FOQJG7FB.css": "560e5998c17b55fa0d5511b1469332b56417c150"
   },
