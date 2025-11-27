@@ -1,11 +1,11 @@
 {
   "configVersion": 1,
-  "timestamp": 1764247377255,
+  "timestamp": 1764247766942,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "cacheQueryOptions": {
         "ignoreVary": true
