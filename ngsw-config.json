@@ -1,14 +1,15 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
+
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
-          "/index.csr.html",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
@@ -22,22 +23,24 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
+          "/assets/**",
           "/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
         ]
       }
     }
   ],
+
   "dataGroups": [
     {
-      "name": "api-guests",
+      "name": "api-cache",
       "urls": [
-        "https://b8694817f10b.ngrok-free.app/guests"
+        "https://accessapi.apexcode.com.ar/**"
       ],
       "cacheConfig": {
-        "strategy": "freshness",
-        "maxSize": 5,
-        "maxAge": "0u", 
-        "timeout": "0u"
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "12h",
+        "timeout": "10s"
       }
     }
   ]
