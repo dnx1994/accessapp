@@ -5,7 +5,7 @@
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
@@ -15,11 +15,12 @@
           "/*.css",
           "/*.js"
         ]
-      }
+      },
+      "versionedFiles": []
     },
     {
       "name": "assets",
-      "installMode": "lazy",
+      "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
@@ -31,17 +32,6 @@
   ],
 
   "dataGroups": [
-    {
-      "name": "api-cache",
-      "urls": [
-        "https://accessapi.apexcode.com.ar/**"
-      ],
-      "cacheConfig": {
-        "strategy": "performance",
-        "maxSize": 100,
-        "maxAge": "12h",
-        "timeout": "10s"
-      }
-    }
+    
   ]
 }
