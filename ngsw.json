@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1764273352487,
+  "timestamp": 1764336421040,
   "index": "/accessapp/index.html",
   "assetGroups": [
     {
@@ -12,6 +12,7 @@
       },
       "urls": [
         "/accessapp/favicon.ico",
+        "/accessapp/index.html",
         "/accessapp/main-T7JEYVJW.js",
         "/accessapp/polyfills-5CFQRCPP.js",
         "/accessapp/styles-FOQJG7FB.css"
@@ -49,6 +50,7 @@
     "/accessapp/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/accessapp/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/accessapp/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/accessapp/index.html": "da606a215dfbe9774da90cb7d0b0e52261290213",
     "/accessapp/main-T7JEYVJW.js": "258d637d9f3cb720cf81291f5f51caffd761c0e1",
     "/accessapp/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
     "/accessapp/styles-FOQJG7FB.css": "560e5998c17b55fa0d5511b1469332b56417c150"
