@@ -51,7 +51,7 @@ export class MainScreen {
     this.qrResult = resultString;
     this.isreading=false;
     console.log('Código detectado:', resultString);
-    alert(`Código detectado: ${resultString}`);
+    // alert(`Código detectado: ${resultString}`);
     this.openDetails(this.guestsList.find(g=>g.invitationCode===resultString)!);
   }
 
@@ -141,7 +141,7 @@ toggleMenu() {
     this.qrResult = this.code;
     this.isreading=false;
     console.log('Código detectado:', this.qrResult);
-    alert(`Código detectado: ${this.qrResult}`);
+    // alert(`Código detectado: ${this.qrResult}`);
     this.openDetails(this.guestsList.find(g=>g.invitationCode===this.qrResult)!);
   }
   search(){

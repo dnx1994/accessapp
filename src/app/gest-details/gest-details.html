@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Confirmar Cierre</h2>
+<h2 mat-dialog-title>Confirmar Ingreso</h2>
 
 <mat-dialog-content *ngIf="guest">
   <mat-card>
@@ -8,14 +8,14 @@
     </mat-card-header>
 
     <mat-card-content>
-      <p><strong>ID:</strong> {{ guest.id }}</p>
-      <p><strong>Ingreso:</strong> {{ guest.isIngress ? 'Sí' : 'No' }}</p>
+      <!-- <p><strong>ID:</strong> {{ guest.id }}</p> -->
+      <p><strong>Ya ingreso:</strong> {{ guest.isIngress ? 'Sí' : 'No' }}</p>
       <p><strong>Código de Invitación:</strong> {{ guest.invitationCode }}</p>
     </mat-card-content>
   </mat-card>
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-raised-button color="warn" (click)="confirmar()">Marcar Ingreso</button>
-</mat-dialog-actions>
+<div align="end">
+  <button class="button Cancel" (click)="cancelar()">Cancelar</button>
+  <button class="button Ok" (click)="confirmar()">Marcar Ingreso</button>
+</div>

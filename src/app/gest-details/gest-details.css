@@ -25,3 +25,25 @@ mat-dialog-content {
 mat-dialog-actions {
   margin-top: 10px;
 }
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.Ok {
+  background-color: #4CAF50 !important;
+}
+.Cancel {
+  background-color: #f44336 !important;
+}
